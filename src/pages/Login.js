@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-70px)] bg-white dark:bg-[#0A0A0A] transition-colors duration-500 font-sans">
+    <div className="flex h-[calc(100vh-70px)] overflow-hidden bg-white dark:bg-[#0A0A0A] transition-colors duration-500 font-sans">
       
       {/* Left side - Product Features (Elegant Dark Vibe) */}
       <div className="hidden lg:flex w-1/2 relative bg-[#050511] overflow-hidden flex-col justify-between p-16">

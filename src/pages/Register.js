@@ -13,7 +13,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/register`, { username, email, password });
+      await axios.post(`${process.env.REACT_APP_API_URL || 'https://study-assistant-backend-seven.vercel.app'}/api/auth/register`, { username, email, password });
       window.location = '/login';
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');

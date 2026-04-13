@@ -40,8 +40,7 @@ const Register = () => {
         {/* Subtle grid pattern opacity */}
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMC41IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjEiLz48L3N2Zz4=')] opacity-30 z-0"></div>
 
-        <div className={
-elative z-10 space-y-4 max-w-xl transition-all duration-1000 transform }>
+        <div className={`relative z-10 space-y-4 max-w-xl transition-all duration-1000 transform ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-indigo-300 text-sm font-medium backdrop-blur-md mb-4 shadow-xl">
             <Zap size={14} className="text-yellow-400 fill-current" /> Join the Revolution
           </div>
@@ -54,8 +53,7 @@ elative z-10 space-y-4 max-w-xl transition-all duration-1000 transform }>
           </p>
         </div>
         
-        <div className={
-elative z-10 space-y-6 pt-12 transition-all duration-1000 delay-300 transform }>
+        <div className={`relative z-10 space-y-6 pt-12 transition-all duration-1000 delay-300 transform ${mounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <div className="flex items-start gap-5 p-5 rounded-2xl bg-white/[0.02] border border-white/[0.05] backdrop-blur-xl hover:bg-white/[0.04] hover:scale-[1.02] transition-all cursor-default">
             <div className="p-3 bg-indigo-500/20 rounded-xl shadow-inner shadow-indigo-500/20 border border-indigo-400/20">
               <BookOpen size={24} className="text-indigo-400" />
@@ -84,7 +82,7 @@ elative z-10 space-y-6 pt-12 transition-all duration-1000 delay-300 transform }>
 
       {/* Right side - Register Form (Ultra sleek white/dark mode) */}
       <div className="flex-1 flex items-center justify-center p-8 sm:p-12 relative dark:bg-[#0A0A0A]">
-        <div className={w-full max-w-md transition-all duration-1000 delay-100 transform }>
+        <div className={`w-full max-w-md transition-all duration-1000 delay-100 transform ${mounted ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
           <div className="text-center mb-10">
             <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight">
               Create an account

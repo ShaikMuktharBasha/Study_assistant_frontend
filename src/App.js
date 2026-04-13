@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -12,6 +12,35 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/login" replace />;
   }
   return children;
+};
+
+const AppContent = ({ theme, toggleTheme }) => {
+  const location = useLocation();
+  const hideNavbar = ['/login', '/register'].includes(location.pathname);
+
+  return (
+    <div className="min-h-screen bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      {!hideNavbar && <Navbar toggleTheme={toggleTheme} theme={theme} />}
+      <Routes>
+        <Route 
+          path="/login" 
+          element={localStorage.getItem('token') ? <Navigate to="/" replace /> : <Login />} 
+        />
+        <Route 
+          path="/register" 
+          element={localStorage.getItem('token') ? <Navigate to="/" replace /> : <Register />} 
+        />
+        <Route 
+          path="/" 
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
+      </Routes>
+    </div>
+  );
 };
 
 function App() {
@@ -32,27 +61,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-transparent text-gray-900 dark:text-gray-100 transition-colors duration-300">
-        <Navbar toggleTheme={toggleTheme} theme={theme} />
-        <Routes>
-          <Route 
-            path="/login" 
-            element={localStorage.getItem('token') ? <Navigate to="/" replace /> : <Login />} 
-          />
-          <Route 
-            path="/register" 
-            element={localStorage.getItem('token') ? <Navigate to="/" replace /> : <Register />} 
-          />
-          <Route 
-            path="/" 
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            } 
-          />
-        </Routes>
-      </div>
+      <AppContent theme={theme} toggleTheme={toggleTheme} />
     </Router>
   );
 }

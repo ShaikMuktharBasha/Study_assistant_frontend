@@ -34,11 +34,11 @@ const Dashboard = () => {
       <div className="absolute top-0 -left-64 w-96 h-96 bg-purple-300 dark:bg-purple-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 transform -translate-x-1/2 -translate-y-1/2 z-0 transition-colors duration-300"></div>
       <div className="absolute top-0 -right-64 w-96 h-96 bg-indigo-300 dark:bg-indigo-900 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2 z-0 transition-colors duration-300"></div>
 
-      <div className="container mx-auto p-4 md:p-8 flex flex-col lg:flex-row gap-8 max-w-7xl relative z-10">
-        
+      <div className="container mx-auto p-4 md:p-6 lg:p-8 flex flex-col lg:flex-row gap-4 lg:gap-8 max-w-7xl relative z-10 w-full">
+
         {/* Sidebar */}
-        <div className="lg:w-1/3 flex flex-col gap-6">
-          <div className={`glass p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border ${documents.length === 0 ? 'border-indigo-300 ring-2 ring-indigo-100 ring-offset-2' : 'border-white/50'} transition-all duration-300`}>
+        <div className="lg:w-1/3 flex flex-col gap-4 lg:gap-6">
+          <div className={`glass p-4 sm:p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border ${documents.length === 0 ? 'border-indigo-300 ring-2 ring-indigo-100 ring-offset-2' : 'border-white/50'} transition-all duration-300`}>
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 rounded-lg">
@@ -51,7 +51,7 @@ const Dashboard = () => {
             <Upload onUpload={() => window.location.reload()} />
           </div>
 
-          <div className={`glass p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border ${documents.length > 0 && !selectedDoc ? 'border-purple-300 ring-2 ring-purple-100 ring-offset-2' : 'border-white/50'} flex-1 flex flex-col transition-all duration-300`}>
+          <div className={`glass p-4 sm:p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border ${documents.length > 0 && !selectedDoc ? 'border-purple-300 ring-2 ring-purple-100 ring-offset-2' : 'border-white/50'} flex-1 flex flex-col transition-all duration-300`}>
               <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400 rounded-lg">
@@ -106,11 +106,11 @@ const Dashboard = () => {
         </div>
 
         {/* Main Content Area */}
-        <div className="lg:w-2/3 flex flex-col gap-6 w-full">
+        <div className="lg:w-2/3 flex flex-col gap-4 lg:gap-6 w-full">
           {selectedDoc ? (
-            <div className="glass flex flex-col h-full rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 transition-all duration-500 overflow-hidden">
+            <div className="glass flex flex-col h-[600px] lg:h-full rounded-xl lg:rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/50 transition-all duration-500 overflow-hidden">
               {/* Header */}
-              <div className="p-6 md:p-8 pb-0 bg-white/40">
+              <div className="p-4 sm:p-6 lg:p-8 pb-0 bg-white/40">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="p-3 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-md text-white">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
@@ -123,11 +123,11 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                {/* Tabs */}
-                <div className="flex border-b border-gray-200 gap-6">
-                  <button
-                    onClick={() => setActiveTab('summary')}
-                    className={`pb-4 px-2 text-sm font-bold transition-all duration-200 border-b-2 flex items-center gap-2 ${activeTab === 'summary' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-500 hover:text-indigo-500'}`}
+            {/* Tabs */}
+            <div className="flex border-b border-gray-200 gap-2 sm:gap-6 overflow-x-auto whitespace-nowrap scrollbar-hide hide-scrollbar px-2 sm:px-0">
+              <button
+                onClick={() => setActiveTab('summary')}
+                className={`pb-4 px-2 text-sm font-bold transition-all duration-200 border-b-2 flex items-center gap-2 ${activeTab === 'summary' ? 'border-indigo-600 text-indigo-600' : 'border-transparent text-gray-500 hover:text-indigo-500'}`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                     Summary
@@ -150,14 +150,14 @@ const Dashboard = () => {
               </div>
 
               {/* Tab Content */}
-              <div className="p-6 md:p-8 flex-1 bg-white/20">
+              <div className="p-4 sm:p-6 lg:p-8 flex-1 bg-white/20 overflow-y-auto">
                 <div className={activeTab === 'summary' ? 'block animate-fade-in-up' : 'hidden'}>
                   <Summary docId={selectedDoc._id} />
                 </div>
                 <div className={activeTab === 'quiz' ? 'block animate-fade-in-up' : 'hidden'}>
                   <Quiz docId={selectedDoc._id} />
                 </div>
-                <div className={`${activeTab === 'chat' ? 'block animate-fade-in-up' : 'hidden'} h-[500px]`}>
+                <div className={`${activeTab === 'chat' ? 'block animate-fade-in-up' : 'hidden'} h-[400px] lg:h-[500px]`}>
                   <div className="h-full border border-gray-100 rounded-xl overflow-hidden shadow-sm">
                     <Chat docId={selectedDoc._id} />
                   </div>
@@ -165,7 +165,7 @@ const Dashboard = () => {
               </div>
             </div>
           ) : (
-            <div className={`glass p-12 rounded-2xl shadow-sm border ${!selectedDoc && documents.length > 0 ? 'border-indigo-200 shadow-indigo-100 ring-2 ring-indigo-50 ring-offset-4' : 'border-white/50'} flex flex-col items-center justify-center h-full text-center min-h-[500px] transition-all duration-300 relative overflow-hidden`}>
+            <div className={`glass p-6 md:p-12 mt-4 lg:mt-0 rounded-xl lg:rounded-2xl shadow-sm border ${!selectedDoc && documents.length > 0 ? 'border-indigo-200 shadow-indigo-100 ring-2 ring-indigo-50 ring-offset-2 lg:ring-offset-4' : 'border-white/50'} flex flex-col items-center justify-center h-full text-center min-h-[400px] lg:min-h-[500px] transition-all duration-300 relative overflow-hidden`}>
               {/* Pulse animation ring if waiting for selection */}
               {!selectedDoc && documents.length > 0 && (
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-500 animate-pulse"></div>

@@ -15,7 +15,7 @@ const Upload = ({ onUpload }) => {
     formData.append('file', file);
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/documents/upload', formData, { 
+      await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/documents/upload`, formData, { 
         headers: { Authorization: `Bearer ${token}` } 
       });
       setFile(null);

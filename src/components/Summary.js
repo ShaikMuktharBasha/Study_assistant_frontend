@@ -11,7 +11,7 @@ const Summary = ({ docId }) => {
     setError('');
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get(`http://localhost:5000/api/documents/${docId}/summarize`, { 
+      const res = await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/documents/${docId}/summarize`, { 
         headers: { Authorization: `Bearer ${token}` } 
       });
       setSummary(res.data.summary);

@@ -15,7 +15,7 @@ const Dashboard = () => {
       const token = localStorage.getItem('token');
       if (token) {
         try {
-          const res = await axios.get('http://localhost:5000/api/documents', { 
+          const res = await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/documents`, { 
             headers: { Authorization: `Bearer ${token}` } 
           });
           setDocuments(res.data);

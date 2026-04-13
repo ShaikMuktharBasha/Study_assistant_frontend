@@ -11,7 +11,7 @@ const Quiz = ({ docId }) => {
     setError('');
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get(`http://localhost:5000/api/documents/${docId}/quiz`, { 
+      const res = await axios.get(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/documents/${docId}/quiz`, { 
         headers: { Authorization: `Bearer ${token}` } 
       });
       setQuiz(res.data.quiz);
